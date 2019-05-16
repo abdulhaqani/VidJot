@@ -25,7 +25,7 @@ router.post('/login', (req, res, next) => {
   passport.authenticate('local', {
     successRedirect: '/ideas',
     failureRedirect: '/users/login',
-    failurFlash: true,
+    failureFlash: true,
   })(req, res, next);
 });
 // register form post
@@ -59,6 +59,7 @@ router.post('/register', (req, res) => {
         });
         bcrypt.genSalt(10, (err, salt) => {
           bcrypt.hash(newUser.password, salt, (err, hash) => {
+            if (err) throw err;
             newUser.password = hash;
             newUser
               .save()

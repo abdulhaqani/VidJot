@@ -16,7 +16,6 @@ module.exports = function(passport) {
           email,
         }).then(user => {
           if (!user) {
-            console.log('L');
             return done(null, false, { message: 'No user found' });
           }
         });
