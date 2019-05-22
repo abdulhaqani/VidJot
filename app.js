@@ -16,6 +16,7 @@ const users = require('./routes/users');
 
 // passport config
 require('./config/passport')(passport);
+
 // Map global promise - get rid of warning
 mongoose.Promise = global.Promise;
 
@@ -24,11 +25,6 @@ mongoose
   .connect('mongodb://localhost/vidjot-dev', { useNewUrlParser: true })
   .then(() => console.log('connected to mongodb'))
   .catch(err => console.log(err));
-
-// how middleware works
-app.use(function(req, res, next) {
-  next();
-});
 
 // handlebars middleware
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
@@ -40,6 +36,7 @@ app.use(bodyParser.json());
 
 // static folder
 app.use(express.static(path.join(__dirname, 'public')));
+
 // method override middleware
 app.use(methodOverride('_method'));
 

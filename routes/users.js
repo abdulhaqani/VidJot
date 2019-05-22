@@ -21,13 +21,15 @@ router.get('/register', (req, res) => {
 });
 
 // login form post
-router.post('/login', (req, res, next) => {
-  passport.authenticate('local', {
+router.post('/login', (req, res) => {
+  /* passport.authenticate('local', {
     successRedirect: '/ideas',
     failureRedirect: '/users/login',
     failureFlash: true,
-  })(req, res, next);
+  })(req, res, next); */
+  console.log('successful');
 });
+
 // register form post
 router.post('/register', (req, res) => {
   const errors = [];
