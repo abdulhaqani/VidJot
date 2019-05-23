@@ -87,7 +87,7 @@ router.put('/:id', ensureAuthenticated, (req, res) => {
 
 // Delete idea
 router.delete('/:id', ensureAuthenticated, (req, res) => {
-  Idea.remove({ _id: req.params.id }).then(() => {
+  Idea.deleteOne({ _id: req.params.id }).then(() => {
     req.flash('success_msg', 'video idea removed');
     res.redirect('/ideas');
   });
